@@ -1,3 +1,6 @@
+// ─── Mark JS as active (enables reveal animations safely) ───
+document.documentElement.classList.add('js');
+
 // ─── Navbar Scroll Effect ───
 window.addEventListener('scroll', function () {
     const navbar = document.getElementById('navbar');
