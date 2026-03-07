@@ -59,13 +59,13 @@ include __DIR__ . '/includes/header.php';
             <?= $g('products_section_title', 'Our Products') ?>
         </h2>
         <hr class="section-divider mb-10">
-        <div class="grid lg:grid-cols-[200px_1fr] gap-6">
+        <div class="grid lg:grid-cols-[200px_1fr] gap-6 items-stretch">
             <!-- Category Sidebar with Thumbnails -->
-            <div class="flex lg:flex-col gap-3 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0">
+            <div class="flex lg:flex-col gap-3 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 justify-between">
                 <?php foreach ($categories as $cat):
                     $catImg = $cat['image'] ?? ''; ?>
                     <a href="<?= BASE_URL ?>products.php?category=<?= $cat['slug'] ?>"
-                        class="flex-shrink-0 w-[140px] lg:w-full group">
+                        class="flex-shrink-0 w-[140px] lg:w-full group flex-1">
                         <div class="rounded-xl overflow-hidden border-2 border-elite-200 hover:border-elite-400 transition-colors shadow-sm">
                             <?php if ($catImg): ?>
                                 <img src="<?= UPLOAD_URL . $catImg ?>" alt="<?= $cat['name'] ?>"
@@ -80,7 +80,7 @@ include __DIR__ . '/includes/header.php';
                 <?php endforeach; ?>
             </div>
             <!-- Video -->
-            <div class="rounded-2xl overflow-hidden shadow-lg aspect-video relative">
+            <div class="rounded-2xl overflow-hidden shadow-lg relative">
                 <?php
                 $pVideoFile = $g('products_video_file');
                 $pVideoUrl = $g('products_video_url');
