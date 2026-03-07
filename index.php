@@ -4,7 +4,7 @@ $pageTitle = 'หน้าแรก';
 $currentPage = 'home';
 $categories = getCategories();
 $s = getAllSettings();
-$g = function($key, $default = '') use ($s) { return $s[$key] ?? $default; };
+$g = function($key, $default = '') use ($s) { return !empty($s[$key]) ? $s[$key] : $default; };
 include __DIR__ . '/includes/header.php';
 ?>
 
@@ -80,13 +80,13 @@ include __DIR__ . '/includes/header.php';
                 <?php endforeach; ?>
             </div>
             <!-- Video -->
-            <div class="rounded-2xl overflow-hidden shadow-lg">
+            <div class="rounded-2xl overflow-hidden shadow-lg min-h-0">
                 <?php
                 $pVideoFile = $g('products_video_file');
                 $pVideoUrl = $g('products_video_url');
                 $pVideoLoop = $g('products_video_loop', '0') === '1';
                 if ($pVideoFile): ?>
-                    <video class="w-full aspect-video object-cover" autoplay muted playsinline
+                    <video class="w-full max-h-[500px] object-cover" autoplay muted playsinline
                         <?= $pVideoLoop ? 'loop' : '' ?>>
                         <source src="<?= $pVideoFile ?>" type="video/mp4">
                     </video>
@@ -117,13 +117,13 @@ include __DIR__ . '/includes/header.php';
         <hr class="section-divider mb-10">
         <div class="grid lg:grid-cols-[1fr_300px] gap-8">
             <!-- Video -->
-            <div class="rounded-2xl overflow-hidden shadow-lg">
+            <div class="rounded-2xl overflow-hidden shadow-lg min-h-0">
                 <?php
                 $sVideoFile = $g('services_video_file');
                 $sVideoUrl = $g('services_video_url');
                 $sVideoLoop = $g('services_video_loop', '0') === '1';
                 if ($sVideoFile): ?>
-                    <video class="w-full aspect-video object-cover" autoplay muted playsinline
+                    <video class="w-full max-h-[500px] object-cover" autoplay muted playsinline
                         <?= $sVideoLoop ? 'loop' : '' ?>>
                         <source src="<?= $sVideoFile ?>" type="video/mp4">
                     </video>
