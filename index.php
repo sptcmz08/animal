@@ -115,9 +115,9 @@ include __DIR__ . '/includes/header.php';
             <?= $g('services_section_title', 'Our Services') ?>
         </h2>
         <hr class="section-divider mb-10">
-        <div class="grid lg:grid-cols-[1fr_300px] gap-8">
+        <div class="grid lg:grid-cols-[1fr_300px] gap-8 items-stretch">
             <!-- Video -->
-            <div class="rounded-2xl overflow-hidden shadow-lg aspect-video relative">
+            <div class="rounded-2xl overflow-hidden shadow-lg relative">
                 <?php
                 $sVideoFile = $g('services_video_file');
                 $sVideoUrl = $g('services_video_url');
@@ -128,11 +128,11 @@ include __DIR__ . '/includes/header.php';
                         <source src="<?= $sVideoFile ?>" type="video/mp4">
                     </video>
                 <?php elseif ($sVideoUrl): ?>
-                    <iframe src="<?= $sVideoUrl ?>" class="w-full aspect-video" frameborder="0"
+                    <iframe src="<?= $sVideoUrl ?>" class="absolute inset-0 w-full h-full" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
                 <?php else: ?>
-                    <div class="video-placeholder aspect-video">
+                    <div class="absolute inset-0 video-placeholder flex items-center justify-center">
                         <div class="play-btn">
                             <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21" /></svg>
                         </div>
@@ -140,23 +140,30 @@ include __DIR__ . '/includes/header.php';
                 <?php endif; ?>
             </div>
             <!-- Service Cards -->
-            <div class="flex flex-col gap-4">
+            <?php
+            $defaultServices = [
+                1 => ['title' => 'ออกแบบเฟอร์นิเจอร์', 'desc' => 'ออกแบบเฟอร์นิเจอร์สัตว์เลี้ยงตามสั่ง ตอบโจทย์ทุกความต้องการ'],
+                2 => ['title' => 'ผลิตงานคุณภาพ', 'desc' => 'ผลิตด้วยวัสดุคุณภาพ ทนทาน ปลอดภัยสำหรับสัตว์เลี้ยง'],
+                3 => ['title' => 'จัดส่งทั่วประเทศ', 'desc' => 'บริการจัดส่งถึงบ้านทั่วประเทศ พร้อมรับประกันสินค้า'],
+            ];
+            ?>
+            <div class="flex flex-col gap-4 justify-between">
                 <?php for ($i = 1; $i <= 3; $i++):
-                    $sTitle = $g("service_{$i}_title");
-                    $sDesc = $g("service_{$i}_desc");
+                    $sTitle = $g("service_{$i}_title", $defaultServices[$i]['title']);
+                    $sDesc = $g("service_{$i}_desc", $defaultServices[$i]['desc']);
                     $sImgRaw = $g("service_{$i}_image", '');
                     $sImg = $sImgRaw ? $sImgRaw : BASE_URL . "assets/img/service{$i}.png";
-                    if ($sTitle): ?>
-                    <div class="group">
+                ?>
+                    <div class="group flex-1">
                         <div class="rounded-xl overflow-hidden mb-2 shadow-sm">
                             <img src="<?= $sImg ?>" alt="<?= $sTitle ?>"
-                                class="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-300"
-                                onerror="this.parentElement.innerHTML='<div class=\'w-full h-36 bg-elite-200 flex items-center justify-center text-elite-400\'>🔧</div>'">
+                                class="w-full h-28 object-cover group-hover:scale-105 transition-transform duration-300"
+                                onerror="this.parentElement.innerHTML='<div class=\'w-full h-28 bg-elite-200 flex items-center justify-center text-elite-400\'>🔧</div>'">
                         </div>
-                        <h3 class="font-serif text-base font-bold text-elite-700 italic"><?= $sTitle ?></h3>
+                        <h3 class="font-serif text-sm font-bold text-elite-700 italic"><?= $sTitle ?></h3>
                         <p class="text-xs text-elite-400 leading-relaxed"><?= $sDesc ?></p>
                     </div>
-                <?php endif; endfor; ?>
+                <?php endfor; ?>
             </div>
         </div>
     </div>
