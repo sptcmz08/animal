@@ -109,11 +109,11 @@
                 <!-- Logo -->
                 <a href="<?= BASE_URL ?>" class="flex items-center gap-2 flex-shrink-0">
                     <?php if ($siteLogo): ?>
-                        <img src="<?= $siteLogo ?>" alt="Elite Pet Design" class="h-9 w-auto object-contain">
-                    <?php else: ?>
-                        <span class="font-serif text-base font-bold tracking-[0.1em] uppercase text-elite-800">Elite Pet
-                            Design</span>
+                        <img src="<?= $siteLogo ?>" alt="Elite Pet Design" class="h-12 w-auto object-contain"
+                            style="mix-blend-mode:multiply">
                     <?php endif; ?>
+                    <span class="font-serif text-base font-bold tracking-[0.1em] uppercase text-elite-800">Elite Pet
+                        Design</span>
                 </a>
                 <!-- Nav Links -->
                 <div class="flex items-center gap-1 overflow-x-auto">
