@@ -1,0 +1,36 @@
+# Dependencies
+/vendor/
+/node_modules/
+
+# Environment & Config (contains DB credentials)
+config.php
+
+# Uploads (user-generated content)
+/uploads/products/*
+/uploads/categories/*
+/uploads/blog/*
+/uploads/slips/*
+/uploads/videos/*
+/uploads/settings/*
+!uploads/**/.gitkeep
+
+# Compressed archives
+*.zip
+*.tar.gz
+*.rar
+
+# OS files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+error_log
