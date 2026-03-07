@@ -62,7 +62,7 @@ include __DIR__ . '/includes/header.php';
         <div class="grid lg:grid-cols-[200px_1fr] gap-6 items-stretch">
             <!-- Category Sidebar with Thumbnails -->
             <div class="flex lg:flex-col gap-3 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 justify-between">
-                <?php foreach ($categories as $cat):
+                <?php foreach (array_slice($categories, 0, 6) as $cat):
                     $catImg = $cat['image'] ?? ''; ?>
                     <a href="<?= BASE_URL ?>products.php?category=<?= $cat['slug'] ?>"
                         class="flex-shrink-0 w-[140px] lg:w-full group flex-1">
