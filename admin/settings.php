@@ -42,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Handle image uploads
     $sectionImages = [
+        'branding' => ['site_logo'],
         'hero' => ['hero_image_1', 'hero_image_2', 'hero_image_3'],
         'services' => ['service_1_image', 'service_2_image', 'service_3_image'],
     ];
@@ -127,6 +128,19 @@ $st = $sectionTitles[$section] ?? $sectionTitles['branding'];
 
 <?php if ($section === 'branding'): ?>
                     <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label">โลโก้เว็บไซต์</label>
+                            <div class="d-flex align-items-center gap-3 mb-2">
+                                <?php $curLogo = $s['site_logo'] ?? ''; if ($curLogo): ?>
+                                    <img src="<?= $curLogo ?>" class="img-preview" style="width:120px;height:auto;max-height:60px" onerror="this.style.display='none'">
+                                    <span class="text-success small"><i class="bi bi-check-circle"></i> มีโลโก้อยู่แล้ว</span>
+                                <?php else: ?>
+                                    <span class="text-muted small">ยังไม่ได้อัปโหลดโลโก้ (จะแสดงชื่อเว็บแทน)</span>
+                                <?php endif; ?>
+                            </div>
+                            <input type="file" name="site_logo" class="form-control form-control-sm" accept="image/*">
+                            <div class="form-text">แนะนำ PNG โปร่งใส ขนาด 200x60px หรือใหญ่กว่า</div>
+                        </div>
                         <div class="col-md-6">
                             <label class="form-label">ชื่อเว็บไซต์</label>
                             <input type="text" name="site_name" class="form-control" value="<?= $v('site_name') ?>">

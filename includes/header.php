@@ -43,25 +43,49 @@
         }
     </script>
     <style>
-        body { font-family: 'Prompt', sans-serif; color: #4a3a2c; -webkit-font-smoothing: antialiased; }
-        a { text-decoration: none; color: inherit; }
+        body {
+            font-family: 'Prompt', sans-serif;
+            color: #4a3a2c;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
         .video-placeholder {
             background: linear-gradient(135deg, #b8a07a 0%, #a08860 50%, #8a7050 100%);
             border-radius: 20px;
             position: relative;
-            display: flex; align-items: center; justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
         .play-btn {
-            width: 80px; height: 80px;
-            background: rgba(0,0,0,0.7);
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 0, 0, 0.7);
             border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
             transition: transform 0.3s, background 0.3s;
         }
-        .play-btn:hover { transform: scale(1.1); background: rgba(0,0,0,0.85); }
-        .play-btn svg { width: 32px; height: 32px; fill: white; margin-left: 4px; }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            background: rgba(0, 0, 0, 0.85);
+        }
+
+        .play-btn svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+            margin-left: 4px;
+        }
 
         .section-divider {
             border: none;
@@ -85,10 +109,10 @@
                 <!-- Logo -->
                 <a href="<?= BASE_URL ?>" class="flex items-center gap-2 flex-shrink-0">
                     <?php if ($siteLogo): ?>
-                        <img src="<?= BASE_URL . $siteLogo ?>" alt="Elite Pet Design"
-                            class="h-9 w-auto object-contain">
+                        <img src="<?= $siteLogo ?>" alt="Elite Pet Design" class="h-9 w-auto object-contain">
                     <?php else: ?>
-                        <span class="font-serif text-base font-bold tracking-[0.1em] uppercase text-elite-800">Elite Pet Design</span>
+                        <span class="font-serif text-base font-bold tracking-[0.1em] uppercase text-elite-800">Elite Pet
+                            Design</span>
                     <?php endif; ?>
                 </a>
                 <!-- Nav Links -->
@@ -96,7 +120,8 @@
                     <a href="<?= BASE_URL ?>"
                         class="px-3 py-1 text-xs font-medium tracking-wider uppercase transition-colors hover:text-elite-700 whitespace-nowrap <?= ($currentPage ?? '') === 'home' ? 'text-elite-800 font-semibold' : 'text-elite-500' ?>">Home</a>
                     <a href="<?= BASE_URL ?>#services"
-                        class="px-3 py-1 text-xs font-medium tracking-wider uppercase transition-colors hover:text-elite-700 whitespace-nowrap text-elite-500">Our Service</a>
+                        class="px-3 py-1 text-xs font-medium tracking-wider uppercase transition-colors hover:text-elite-700 whitespace-nowrap text-elite-500">Our
+                        Service</a>
                     <a href="<?= BASE_URL ?>#materials"
                         class="px-3 py-1 text-xs font-medium tracking-wider uppercase transition-colors hover:text-elite-700 whitespace-nowrap text-elite-500">Materials</a>
                     <a href="<?= BASE_URL ?>products.php"
