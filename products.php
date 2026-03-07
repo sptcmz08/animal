@@ -114,7 +114,7 @@ include __DIR__ . '/includes/header.php';
                             class="group bg-white rounded-2xl border border-elite-200/60 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 block">
                             <div class="relative overflow-hidden aspect-[4/3]">
                                 <img src="<?= getProductImageUrl($p['primary_image']) ?>" alt="<?= $p['name'] ?>"
-                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy"
                                     onerror="this.src='https://images.unsplash.com/photo-1545249390-6bdfa286032f?w=400&h=260&fit=crop'">
                                 <div
                                     class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex justify-center">

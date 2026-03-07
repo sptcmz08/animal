@@ -8,8 +8,10 @@ $adminPage = 'dashboard';
 $totalProducts = $pdo->query("SELECT COUNT(*) FROM products")->fetchColumn();
 $totalCategories = $pdo->query("SELECT COUNT(*) FROM categories")->fetchColumn();
 $totalBlogPosts = $pdo->query("SELECT COUNT(*) FROM blog_posts")->fetchColumn();
+$totalViews = $pdo->query("SELECT COALESCE(SUM(views),0) FROM products")->fetchColumn();
 $totalMessages = $pdo->query("SELECT COUNT(*) FROM contact_messages")->fetchColumn();
 $recentMessages = $pdo->query("SELECT * FROM contact_messages ORDER BY created_at DESC LIMIT 10")->fetchAll();
+$recentProducts = $pdo->query("SELECT p.*, c.name as cat_name FROM products p LEFT JOIN categories c ON c.id = p.category_id ORDER BY p.created_at DESC LIMIT 5")->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="th">
@@ -50,18 +52,18 @@ $recentMessages = $pdo->query("SELECT * FROM contact_messages ORDER BY created_a
             </div>
             <div class="col-md-3 col-6">
                 <div class="card stat-card p-3">
-                    <div class="stat-icon mb-2" style="background:rgba(16,185,129,0.1)"><i
-                            class="bi bi-file-text fs-5" style="color:#10B981"></i></div>
+                    <div class="stat-icon mb-2" style="background:rgba(16,185,129,0.1)"><i class="bi bi-file-text fs-5"
+                            style="color:#10B981"></i></div>
                     <div class="fs-2 fw-bold"><?= $totalBlogPosts ?></div>
                     <div class="text-muted small">บทความ</div>
                 </div>
             </div>
             <div class="col-md-3 col-6">
                 <div class="card stat-card p-3">
-                    <div class="stat-icon mb-2" style="background:rgba(139,92,246,0.1)"><i class="bi bi-envelope fs-5"
+                    <div class="stat-icon mb-2" style="background:rgba(139,92,246,0.1)"><i class="bi bi-eye fs-5"
                             style="color:#8B5CF6"></i></div>
-                    <div class="fs-2 fw-bold"><?= $totalMessages ?></div>
-                    <div class="text-muted small">ข้อความติดต่อ</div>
+                    <div class="fs-2 fw-bold"><?= number_format($totalViews) ?></div>
+                    <div class="text-muted small">ยอดเข้าชมสินค้า</div>
                 </div>
             </div>
         </div>
@@ -93,6 +95,33 @@ $recentMessages = $pdo->query("SELECT * FROM contact_messages ORDER BY created_a
                                 <td colspan="4" class="text-center text-muted py-5">ยังไม่มีข้อความ</td>
                             </tr>
                         <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Recent Products -->
+        <div class="card border-0 shadow-sm mt-4" style="border-radius:12px;overflow:hidden">
+            <div class="card-header bg-white fw-bold py-3"><i class="bi bi-box-seam me-2"></i>สินค้าล่าสุด</div>
+            <div class="table-responsive">
+                <table class="table table-admin table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th>ชื่อสินค้า</th>
+                            <th>หมวดหมู่</th>
+                            <th>ราคา</th>
+                            <th>เข้าชม</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($recentProducts as $p): ?>
+                            <tr>
+                                <td class="fw-semibold"><?= htmlspecialchars($p['name']) ?></td>
+                                <td><span class="badge bg-light text-dark"><?= $p['cat_name'] ?? '-' ?></span></td>
+                                <td><?= number_format($p['sale_price'] ?: $p['price']) ?> ฿</td>
+                                <td><?= number_format($p['views']) ?></td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

@@ -3,7 +3,8 @@ require_once __DIR__ . '/init.php';
 $pageTitle = 'หน้าแรก';
 $currentPage = 'home';
 $categories = getCategories();
-$s = getAllSettings();
+if (!isset($GLOBALS['_allSettings'])) $GLOBALS['_allSettings'] = getAllSettings();
+$s = $GLOBALS['_allSettings'];
 $g = function($key, $default = '') use ($s) { return !empty($s[$key]) ? $s[$key] : $default; };
 include __DIR__ . '/includes/header.php';
 ?>
@@ -42,7 +43,7 @@ include __DIR__ . '/includes/header.php';
 </section>
 
 <!-- WELCOME TEXT -->
-<section class="py-8 bg-elite-50">
+<section class="py-8 bg-elite-50 reveal">
     <div class="max-w-4xl mx-auto px-4 text-center">
         <p class="text-sm md:text-base text-elite-500 leading-relaxed font-serif italic">
             <?= $g('intro_text', 'Welcome to ELITE PET DESIGN, a workshop where custom pet furniture is hand-crafted to perfectly suit the lives of your furry, feathered, or exotic pets.') ?>
@@ -53,7 +54,7 @@ include __DIR__ . '/includes/header.php';
 <hr class="section-divider">
 
 <!-- OUR PRODUCTS -->
-<section class="py-16 bg-elite-50">
+<section class="py-16 bg-elite-50 reveal">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl md:text-4xl font-serif font-bold text-elite-800 text-center mb-10 italic">
             <?= $g('products_section_title', 'Our Products') ?>
@@ -69,7 +70,7 @@ include __DIR__ . '/includes/header.php';
                         <div class="rounded-xl overflow-hidden border-2 border-elite-200 hover:border-elite-400 transition-colors shadow-sm">
                             <?php if ($catImg): ?>
                                 <img src="<?= UPLOAD_URL . $catImg ?>" alt="<?= $cat['name'] ?>"
-                                    class="w-full h-24 lg:h-20 object-cover group-hover:scale-105 transition-transform duration-300"
+                                    class="w-full h-24 lg:h-20 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"
                                     onerror="this.parentElement.innerHTML='<div class=\'w-full h-24 lg:h-20 bg-elite-200 flex items-center justify-center text-elite-400 text-2xl\'>🐾</div>'">
                             <?php else: ?>
                                 <div class="w-full h-24 lg:h-20 bg-elite-200 flex items-center justify-center text-elite-400 text-2xl">🐾</div>
@@ -109,7 +110,7 @@ include __DIR__ . '/includes/header.php';
 <hr class="section-divider">
 
 <!-- OUR SERVICES -->
-<section id="services" class="py-16 bg-white">
+<section id="services" class="py-16 bg-white reveal">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl md:text-4xl font-serif font-bold text-elite-800 text-center mb-3 italic">
             <?= $g('services_section_title', 'Our Services') ?>
@@ -157,7 +158,7 @@ include __DIR__ . '/includes/header.php';
                     <div class="group flex-1">
                         <div class="rounded-xl overflow-hidden mb-2 shadow-sm">
                             <img src="<?= $sImg ?>" alt="<?= $sTitle ?>"
-                                class="w-full h-28 object-cover group-hover:scale-105 transition-transform duration-300"
+                                class="w-full h-28 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"
                                 onerror="this.parentElement.innerHTML='<div class=\'w-full h-28 bg-elite-200 flex items-center justify-center text-elite-400\'>🔧</div>'">
                         </div>
                         <h3 class="font-serif text-sm font-bold text-elite-700 italic"><?= $sTitle ?></h3>
@@ -173,7 +174,7 @@ include __DIR__ . '/includes/header.php';
 
 <!-- MATERIALS -->
 <?php $matTitle = $g('materials_title'); $matText = $g('materials_text'); if ($matTitle || $matText): ?>
-<section id="materials" class="relative py-20 overflow-hidden">
+<section id="materials" class="relative py-20 overflow-hidden reveal">
     <!-- Background Image -->
     <div class="absolute inset-0">
         <img src="<?= BASE_URL ?>assets/img/materials-bg.jpg" alt="Materials"
@@ -195,7 +196,7 @@ include __DIR__ . '/includes/header.php';
 <hr class="section-divider">
 
 <!-- CUSTOMER REVIEWS - Paper/parchment style -->
-<section id="reviews" class="py-16 bg-elite-50">
+<section id="reviews" class="py-16 bg-elite-50 reveal">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl md:text-4xl font-serif font-bold text-elite-800 text-center mb-10 italic">Customer Reviews</h2>
         <hr class="section-divider mb-10">
@@ -217,7 +218,7 @@ include __DIR__ . '/includes/header.php';
 <hr class="section-divider">
 
 <!-- CONTACT US -->
-<section class="py-16 bg-white">
+<section class="py-16 bg-white reveal">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl md:text-4xl font-serif font-bold text-elite-800 text-center mb-10 italic">Contact Us</h2>
         <hr class="section-divider mb-10">
