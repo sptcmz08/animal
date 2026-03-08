@@ -87,7 +87,7 @@ include __DIR__ . '/includes/header.php';
                 $pVideoUrl = $g('products_video_url');
                 $pVideoLoop = $g('products_video_loop', '0') === '1';
                 if ($pVideoFile): ?>
-                    <video class="absolute inset-0 w-full h-full object-cover" autoplay muted playsinline
+                    <video class="absolute inset-0 w-full h-full object-cover autoplay-video" autoplay muted playsinline webkit-playsinline preload="auto"
                         <?= $pVideoLoop ? 'loop' : '' ?>>
                         <source src="<?= $pVideoFile ?>" type="video/mp4">
                     </video>
@@ -124,7 +124,7 @@ include __DIR__ . '/includes/header.php';
                 $sVideoUrl = $g('services_video_url');
                 $sVideoLoop = $g('services_video_loop', '0') === '1';
                 if ($sVideoFile): ?>
-                    <video class="absolute inset-0 w-full h-full object-cover" autoplay muted playsinline
+                    <video class="absolute inset-0 w-full h-full object-cover autoplay-video" autoplay muted playsinline webkit-playsinline preload="auto"
                         <?= $sVideoLoop ? 'loop' : '' ?>>
                         <source src="<?= $sVideoFile ?>" type="video/mp4">
                     </video>
@@ -281,3 +281,42 @@ include __DIR__ . '/includes/header.php';
 </section>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
+
+<script>
+// Force autoplay videos on mobile (iOS Safari / Android Chrome workaround)
+(function() {
+    var videos = document.querySelectorAll('.autoplay-video');
+    if (!videos.length) return;
+
+    // Ensure all videos are muted (required for mobile autoplay)
+    videos.forEach(function(v) { v.muted = true; });
+
+    // IntersectionObserver: play when visible, pause when not
+    if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                var video = entry.target;
+                if (entry.isIntersecting) {
+                    video.play().catch(function() {});
+                } else {
+                    video.pause();
+                }
+            });
+        }, { threshold: 0.25 });
+        videos.forEach(function(v) { observer.observe(v); });
+    }
+
+    // Fallback: on first user interaction, try to play all videos
+    var unlocked = false;
+    function unlockVideos() {
+        if (unlocked) return;
+        unlocked = true;
+        videos.forEach(function(v) {
+            if (v.paused) v.play().catch(function() {});
+        });
+    }
+    document.addEventListener('touchstart', unlockVideos, { once: true, passive: true });
+    document.addEventListener('click', unlockVideos, { once: true });
+    document.addEventListener('scroll', unlockVideos, { once: true, passive: true });
+})();
+</script>
