@@ -118,7 +118,7 @@ include __DIR__ . '/includes/header.php';
         <hr class="section-divider mb-10">
         <div class="grid lg:grid-cols-[1fr_300px] gap-8 items-stretch">
             <!-- Video -->
-            <div class="rounded-2xl overflow-hidden shadow-lg relative aspect-video">
+            <div class="rounded-2xl overflow-hidden shadow-lg relative aspect-video lg:aspect-auto">
                 <?php
                 $sVideoFile = $g('services_video_file');
                 $sVideoUrl = $g('services_video_url');
