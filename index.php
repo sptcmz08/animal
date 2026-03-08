@@ -81,7 +81,7 @@ include __DIR__ . '/includes/header.php';
                 <?php endforeach; ?>
             </div>
             <!-- Video -->
-            <div class="rounded-2xl overflow-hidden shadow-lg relative">
+            <div class="rounded-2xl overflow-hidden shadow-lg relative aspect-video">
                 <?php
                 $pVideoFile = $g('products_video_file');
                 $pVideoUrl = $g('products_video_url');
@@ -118,7 +118,7 @@ include __DIR__ . '/includes/header.php';
         <hr class="section-divider mb-10">
         <div class="grid lg:grid-cols-[1fr_300px] gap-8 items-stretch">
             <!-- Video -->
-            <div class="rounded-2xl overflow-hidden shadow-lg relative">
+            <div class="rounded-2xl overflow-hidden shadow-lg relative aspect-video">
                 <?php
                 $sVideoFile = $g('services_video_file');
                 $sVideoUrl = $g('services_video_url');
