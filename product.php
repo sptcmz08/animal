@@ -11,7 +11,8 @@ $images = getProductImages($product['id']);
 $related = getRelatedProducts($product['id'], $product['category_id']);
 $s = getAllSettings();
 $g = function ($key, $default = '') use ($s) {
-    return $s[$key] ?? $default; };
+    return $s[$key] ?? $default;
+};
 $pageTitle = $product['name'];
 $currentPage = 'product';
 include __DIR__ . '/includes/header.php';
@@ -26,7 +27,7 @@ include __DIR__ . '/includes/header.php';
         <span class="text-elite-700"><?= $product['name'] ?></span>
     </div>
 
-    <div class="grid lg:grid-cols-2 gap-10">
+    <div class="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-10">
         <!-- Gallery -->
         <div>
             <div
@@ -36,10 +37,10 @@ include __DIR__ . '/includes/header.php';
                     onerror="this.src='https://images.unsplash.com/photo-1545249390-6bdfa286032f?w=600&h=500&fit=crop'">
             </div>
             <?php if (count($images) > 1): ?>
-                <div class="flex gap-3 mt-4">
+                <div class="flex gap-2 md:gap-3 mt-3 md:mt-4 flex-wrap">
                     <?php foreach ($images as $i => $img): ?>
                         <button onclick="changeImage(this, '<?= getProductImageUrl($img['image_path']) ?>')"
-                            class="w-20 h-20 rounded-xl overflow-hidden border-2 transition-colors gallery-thumb <?= $i === 0 ? 'border-elite-500' : 'border-elite-200 hover:border-elite-400' ?>">
+                            class="w-16 h-16 md:w-20 md:h-20 rounded-xl overflow-hidden border-2 transition-colors gallery-thumb <?= $i === 0 ? 'border-elite-500' : 'border-elite-200 hover:border-elite-400' ?>">
                             <img src="<?= getProductImageUrl($img['image_path']) ?>" class="w-full h-full object-cover"
                                 onerror="this.src='https://via.placeholder.com/80'">
                         </button>
@@ -50,7 +51,8 @@ include __DIR__ . '/includes/header.php';
 
         <!-- Info -->
         <div>
-            <h1 class="text-2xl lg:text-3xl font-serif font-bold text-elite-800 mb-3 italic"><?= $product['name'] ?>
+            <h1 class="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-elite-800 mb-3 italic">
+                <?= $product['name'] ?>
             </h1>
 
             <?php if ($rating['count'] > 0): ?>
@@ -63,7 +65,7 @@ include __DIR__ . '/includes/header.php';
 
             <div class="flex items-center gap-3 mb-5">
                 <span
-                    class="text-3xl font-extrabold text-elite-700"><?= formatPrice($product['sale_price'] ?: $product['price']) ?></span>
+                    class="text-2xl md:text-3xl font-extrabold text-elite-700"><?= formatPrice($product['sale_price'] ?: $product['price']) ?></span>
                 <?php if ($product['sale_price']): ?>
                     <span class="text-lg text-elite-300 line-through"><?= formatPrice($product['price']) ?></span>
                     <span class="bg-red-500/10 text-red-500 text-sm font-bold px-3 py-1 rounded-lg">ประหยัด
@@ -91,7 +93,7 @@ include __DIR__ . '/includes/header.php';
             <div class="bg-elite-50 rounded-2xl p-5">
                 <h3 class="text-sm font-bold text-elite-700 uppercase tracking-wide mb-3">💬 สนใจสินค้า? ติดต่อเราได้เลย
                 </h3>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-3">
                     <a href="<?= $g('social_line_url', '#') ?>" target="_blank"
                         class="flex items-center gap-3 px-5 py-3.5 bg-[#06C755] text-white rounded-xl font-semibold hover:brightness-110 transition-all shadow-lg shadow-[#06C755]/20">
                         <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">

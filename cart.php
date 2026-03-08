@@ -29,12 +29,12 @@ include __DIR__ . '/includes/header.php';
                 class="inline-flex items-center gap-2 px-6 py-3 bg-paw-500 text-white rounded-xl font-semibold hover:bg-paw-600 transition-colors">ช้อปเลย</a>
         </div>
     <?php else: ?>
-        <div class="grid lg:grid-cols-[1fr_380px] gap-8">
+        <div class="grid md:grid-cols-[1fr_340px] lg:grid-cols-[1fr_380px] gap-6 md:gap-8">
             <div class="space-y-3">
                 <?php foreach ($cartItems as $item):
                     $itemPrice = $item['sale_price'] ?: $item['price']; ?>
                     <div
-                        class="bg-white rounded-2xl border border-paw-200/50 p-4 flex items-center gap-4 hover:shadow-md transition-shadow">
+                        class="bg-white rounded-2xl border border-paw-200/50 p-3 md:p-4 flex flex-wrap md:flex-nowrap items-center gap-3 md:gap-4 hover:shadow-md transition-shadow">
                         <img src="<?= getProductImageUrl($item['primary_image']) ?>" alt="<?= $item['name'] ?>"
                             class="w-20 h-20 rounded-xl object-cover border border-paw-200/50"
                             onerror="this.src='https://via.placeholder.com/80'">
@@ -51,7 +51,9 @@ include __DIR__ . '/includes/header.php';
                             <button onclick="updateCart(<?= $item['id'] ?>, <?= $item['qty'] + 1 ?>)"
                                 class="w-8 h-8 rounded-lg border border-paw-200 flex items-center justify-center text-paw-700 hover:bg-paw-50 transition-colors">+</button>
                         </div>
-                        <div class="font-bold text-paw-700 w-24 text-right"><?= formatPrice($itemPrice * $item['qty']) ?></div>
+                        <div
+                            class="font-bold text-paw-700 w-full md:w-24 text-right order-first md:order-none text-sm md:text-base">
+                            <?= formatPrice($itemPrice * $item['qty']) ?></div>
                         <button onclick="removeFromCart(<?= $item['id'] ?>)"
                             class="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors">
                             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -74,7 +76,8 @@ include __DIR__ . '/includes/header.php';
                     </div>
                     <?php if ($couponDiscount > 0): ?>
                         <div class="flex justify-between text-accent-500">
-                            <span>ส่วนลดคูปอง</span><span>-<?= formatPrice($couponDiscount) ?></span></div><?php endif; ?>
+                            <span>ส่วนลดคูปอง</span><span>-<?= formatPrice($couponDiscount) ?></span>
+                        </div><?php endif; ?>
                 </div>
                 <div class="flex justify-between py-4 text-lg font-bold text-paw-700"><span>ยอดรวม</span><span
                         class="text-paw-500"><?= formatPrice($total) ?></span></div>

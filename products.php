@@ -48,9 +48,15 @@ include __DIR__ . '/includes/header.php';
 </div>
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <div class="grid lg:grid-cols-[260px_1fr] gap-8">
+    <div class="grid md:grid-cols-[240px_1fr] lg:grid-cols-[260px_1fr] gap-6 md:gap-8">
         <!-- Sidebar -->
-        <aside class="space-y-6">
+        <aside>
+            <!-- Mobile Filter Toggle -->
+            <button onclick="this.nextElementSibling.classList.toggle('hidden');this.querySelector('span').textContent=this.nextElementSibling.classList.contains('hidden')?'แสดงตัวกรอง':'ซ่อนตัวกรอง'" class="md:hidden w-full flex items-center justify-between px-4 py-3 bg-white rounded-xl border border-elite-200/50 text-sm font-semibold text-elite-700 mb-3">
+                <span>แสดงตัวกรอง</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" /></svg>
+            </button>
+            <div class="hidden md:block space-y-4 md:space-y-6">
             <form method="GET" action="products.php" class="space-y-6">
                 <div class="bg-white rounded-2xl p-5 border border-elite-200/50 shadow-sm">
                     <h3 class="font-bold text-sm text-elite-700 mb-3">🔍 ค้นหา</h3>
@@ -86,11 +92,12 @@ include __DIR__ . '/includes/header.php';
                         class="w-full mt-3 px-4 py-2.5 bg-elite-600 text-white rounded-xl text-sm font-semibold hover:bg-elite-700 transition-colors">กรองราคา</button>
                 </div>
             </form>
+            </div>
         </aside>
 
         <!-- Products -->
         <div>
-            <div class="flex items-center justify-between mb-6 bg-white rounded-xl px-5 py-3 border border-elite-200/50">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6 bg-white rounded-xl px-4 md:px-5 py-3 border border-elite-200/50">
                 <span class="text-sm text-elite-500">พบ <b class="text-elite-800"><?= $total ?></b> รายการ</span>
                 <select onchange="window.location.href=this.value"
                     class="text-sm border border-elite-200 rounded-lg px-3 py-2 outline-none focus:border-elite-500 bg-white">
@@ -108,7 +115,7 @@ include __DIR__ . '/includes/header.php';
                     <p class="text-elite-400">ลองค้นหาด้วยคำค้นอื่นหรือเลือกหมวดหมู่อื่น</p>
                 </div>
             <?php else: ?>
-                <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
                     <?php foreach ($products as $p): ?>
                         <a href="<?= BASE_URL ?>product.php?slug=<?= $p['slug'] ?>"
                             class="group bg-white rounded-2xl border border-elite-200/60 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 block">

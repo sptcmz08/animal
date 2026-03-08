@@ -16,13 +16,14 @@ include __DIR__ . '/includes/header.php';
     </div>
 </div>
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <div class="grid lg:grid-cols-[1fr_400px] gap-8">
+    <div class="grid md:grid-cols-[1fr_340px] lg:grid-cols-[1fr_400px] gap-6 md:gap-8">
         <div class="bg-white rounded-2xl border border-elite-200/50 p-6 lg:p-8 shadow-sm">
             <h2 class="text-xl font-serif font-bold text-elite-800 mb-6 italic">ส่งข้อความถึงเรา</h2>
             <?php if ($msg): ?>
                 <div
                     class="mb-4 px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200 text-sm font-semibold">
-                    <?= $msg ?></div><?php endif; ?>
+                    <?= $msg ?>
+                </div><?php endif; ?>
             <form method="POST" class="space-y-4">
                 <div class="grid md:grid-cols-2 gap-4">
                     <div><label class="block text-sm font-semibold text-elite-700 mb-1.5">ชื่อ-นามสกุล *</label><input
@@ -70,7 +71,10 @@ include __DIR__ . '/includes/header.php';
     <div class="mt-8">
         <h2 class="text-xl font-serif font-bold text-elite-800 mb-4 italic">📍 แผนที่</h2>
         <div class="bg-white rounded-2xl border border-elite-200/50 overflow-hidden shadow-sm">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d402.3!2d102.8175765!3d16.4061353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31228baeeaff5de7%3A0x3a1cf5d69159511a!2sPorPhayakCattery!5e0!3m2!1sth!2sth!4v1709654400000" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d402.3!2d102.8175765!3d16.4061353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31228baeeaff5de7%3A0x3a1cf5d69159511a!2sPorPhayakCattery!5e0!3m2!1sth!2sth!4v1709654400000"
+                width="100%" height="100%" style="border:0; min-height:250px;" class="md:min-h-[400px]"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
 </div>

@@ -10,7 +10,7 @@ include __DIR__ . '/includes/header.php';
 ?>
 
 <!-- HERO SECTION - Full width background -->
-<section class="relative min-h-[70vh] lg:min-h-[85vh] flex items-center justify-center overflow-hidden">
+<section class="relative min-h-[50vh] md:min-h-[65vh] lg:min-h-[85vh] flex items-center justify-center overflow-hidden">
     <!-- Background Image -->
     <?php
     $heroImg = $g('hero_image_1', '');
@@ -26,7 +26,7 @@ include __DIR__ . '/includes/header.php';
     <!-- Content Overlay -->
     <div class="relative z-10 text-center px-4 max-w-3xl mx-auto">
         <p class="text-xs tracking-[0.4em] uppercase text-elite-800 font-semibold mb-4 font-en" style="text-shadow: 0 0 8px rgba(250,248,244,0.9), 0 0 20px rgba(250,248,244,0.6)">Elite Pet Design</p>
-        <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-elite-900 italic leading-tight mb-3" style="text-shadow: 0 0 12px rgba(250,248,244,0.95), 0 0 30px rgba(250,248,244,0.7), 0 2px 4px rgba(250,248,244,0.8)">
+        <h1 class="font-serif text-3xl md:text-5xl lg:text-6xl font-bold text-elite-900 italic leading-tight mb-3" style="text-shadow: 0 0 12px rgba(250,248,244,0.95), 0 0 30px rgba(250,248,244,0.7), 0 2px 4px rgba(250,248,244,0.8)">
             <?= $g('hero_title', 'Crafted for Every Pet,') ?>
         </h1>
         <p class="text-elite-800 text-base md:text-lg mb-2 font-th font-semibold" style="text-shadow: 0 0 10px rgba(250,248,244,0.9), 0 0 25px rgba(250,248,244,0.6)">
@@ -36,7 +36,7 @@ include __DIR__ . '/includes/header.php';
             Made-to-order furniture designed specifically<br>for the lifestyle of each beloved pet.
         </p>
         <a href="<?= BASE_URL ?>products.php"
-            class="inline-block px-8 py-3 border-2 border-elite-700 text-elite-700 text-sm font-semibold tracking-wider uppercase hover:bg-elite-700 hover:text-white transition-all duration-300">
+            class="inline-block px-6 md:px-8 py-2.5 md:py-3 border-2 border-elite-700 text-elite-700 text-xs md:text-sm font-semibold tracking-wider uppercase hover:bg-elite-700 hover:text-white transition-all duration-300">
             Explore Our Work
         </a>
     </div>
@@ -60,13 +60,13 @@ include __DIR__ . '/includes/header.php';
             <?= $g('products_section_title', 'Our Products') ?>
         </h2>
         <hr class="section-divider mb-10">
-        <div class="grid lg:grid-cols-[200px_1fr] gap-6 items-stretch">
+        <div class="grid md:grid-cols-[180px_1fr] lg:grid-cols-[200px_1fr] gap-4 md:gap-6 items-stretch">
             <!-- Category Sidebar with Thumbnails -->
-            <div class="flex lg:flex-col gap-3 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 justify-between">
+            <div class="flex md:flex-col gap-2 md:gap-3 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0 justify-start md:justify-between snap-x snap-mandatory">
                 <?php foreach (array_slice($categories, 0, 6) as $cat):
                     $catImg = $cat['image'] ?? ''; ?>
                     <a href="<?= BASE_URL ?>products.php?category=<?= $cat['slug'] ?>"
-                        class="flex-shrink-0 w-[140px] lg:w-full group flex-1">
+                        class="flex-shrink-0 w-[110px] md:w-full group flex-1 snap-start">
                         <div class="rounded-xl overflow-hidden border-2 border-elite-200 hover:border-elite-400 transition-colors shadow-sm">
                             <?php if ($catImg): ?>
                                 <img src="<?= UPLOAD_URL . $catImg ?>" alt="<?= $cat['name'] ?>"
@@ -116,7 +116,7 @@ include __DIR__ . '/includes/header.php';
             <?= $g('services_section_title', 'Our Services') ?>
         </h2>
         <hr class="section-divider mb-10">
-        <div class="grid lg:grid-cols-[1fr_300px] gap-8 items-stretch">
+        <div class="grid md:grid-cols-[1fr_250px] lg:grid-cols-[1fr_300px] gap-6 md:gap-8 items-stretch">
             <!-- Video -->
             <div class="rounded-2xl overflow-hidden shadow-lg relative aspect-video lg:aspect-auto">
                 <?php
@@ -200,7 +200,7 @@ include __DIR__ . '/includes/header.php';
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl md:text-4xl font-serif font-bold text-elite-800 text-center mb-10 italic">Customer Reviews</h2>
         <hr class="section-divider mb-10">
-        <div class="grid md:grid-cols-2 gap-8">
+        <div class="grid md:grid-cols-2 gap-5 md:gap-8">
             <?php for ($i = 1; $i <= 2; $i++):
                 $rName = $g("review_{$i}_name");
                 $rText = $g("review_{$i}_text");
@@ -222,7 +222,7 @@ include __DIR__ . '/includes/header.php';
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl md:text-4xl font-serif font-bold text-elite-800 text-center mb-10 italic">Contact Us</h2>
         <hr class="section-divider mb-10">
-        <div class="grid lg:grid-cols-2 gap-8">
+        <div class="grid md:grid-cols-2 gap-6 md:gap-8">
             <!-- Map -->
             <div class="rounded-lg overflow-hidden shadow-sm" style="min-height: 280px;">
                 <?php $mapUrl = $g('contact_map_embed', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d402.3!2d102.8175765!3d16.4061353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31228baeeaff5de7%3A0x3a1cf5d69159511a!2sPorPhayakCattery!5e0!3m2!1sth!2sth!4v1709654400000'); if ($mapUrl): ?>
