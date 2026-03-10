@@ -4,8 +4,42 @@ $pageTitle = 'ติดต่อเรา';
 $currentPage = 'contact';
 $msg = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $pdo->prepare("INSERT INTO contact_messages (name, email, subject, message) VALUES (?, ?, ?, ?)")->execute([$_POST['name'], $_POST['email'], $_POST['subject'], $_POST['message']]);
-    $msg = '✅ ส่งข้อความเรียบร้อย เราจะใช้ติดต่อกลับโดยเร็ว';
+    $name    = trim($_POST['name'] ?? '');
+    $email   = trim($_POST['email'] ?? '');
+    $subject = trim($_POST['subject'] ?? '');
+    $message = trim($_POST['message'] ?? '');
+
+    // Save to database
+    $pdo->prepare("INSERT INTO contact_messages (name, email, subject, message) VALUES (?, ?, ?, ?)")->execute([$name, $email, $subject, $message]);
+
+    // Send email notification
+    $htmlBody = '
+    <div style="font-family:\'Segoe UI\',Arial,sans-serif;max-width:600px;margin:0 auto;background:#fefaf5;border:1px solid #e8e0d0;border-radius:12px;overflow:hidden">
+        <div style="background:linear-gradient(135deg,#8b6914,#a67c2e);padding:20px 24px;color:#fff">
+            <h2 style="margin:0;font-size:18px">📩 ข้อความใหม่จากหน้าเว็บ</h2>
+            <p style="margin:4px 0 0;font-size:13px;opacity:0.85">' . SITE_NAME . ' — ' . date('d/m/Y H:i') . '</p>
+        </div>
+        <div style="padding:24px">
+            <table style="width:100%;border-collapse:collapse;font-size:14px">
+                <tr><td style="padding:8px 12px;font-weight:600;color:#5c4a2a;width:100px;vertical-align:top">ชื่อ</td><td style="padding:8px 12px;color:#333">' . htmlspecialchars($name) . '</td></tr>
+                <tr style="background:#f9f3e8"><td style="padding:8px 12px;font-weight:600;color:#5c4a2a;vertical-align:top">อีเมล</td><td style="padding:8px 12px;color:#333"><a href="mailto:' . htmlspecialchars($email) . '" style="color:#8b6914">' . htmlspecialchars($email) . '</a></td></tr>
+                <tr><td style="padding:8px 12px;font-weight:600;color:#5c4a2a;vertical-align:top">หัวข้อ</td><td style="padding:8px 12px;color:#333">' . htmlspecialchars($subject ?: '-') . '</td></tr>
+                <tr style="background:#f9f3e8"><td style="padding:8px 12px;font-weight:600;color:#5c4a2a;vertical-align:top">ข้อความ</td><td style="padding:8px 12px;color:#333;white-space:pre-wrap">' . htmlspecialchars($message) . '</td></tr>
+            </table>
+        </div>
+        <div style="padding:12px 24px;background:#f0eade;font-size:12px;color:#8a7a5a;text-align:center">
+            ส่งจากฟอร์มติดต่อบนเว็บไซต์ ' . SITE_NAME . '
+        </div>
+    </div>';
+
+    $emailSubject = '📩 ข้อความใหม่จาก ' . $name . ($subject ? " — $subject" : '');
+    $result = sendGmailSMTP(MAIL_TO, $emailSubject, $htmlBody);
+
+    if ($result === true) {
+        $msg = '✅ ส่งข้อความเรียบร้อย เราจะติดต่อกลับโดยเร็ว';
+    } else {
+        $msg = '✅ บันทึกข้อความเรียบร้อย เราจะติดต่อกลับโดยเร็ว';
+    }
 }
 include __DIR__ . '/includes/header.php';
 ?>

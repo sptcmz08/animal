@@ -370,3 +370,67 @@ function redirect($url) {
     header("Location: " . BASE_URL . ltrim($url, '/'));
     exit;
 }
+
+// ==================== GMAIL SMTP ====================
+function sendGmailSMTP($to, $subject, $htmlBody) {
+    $smtpHost = 'smtp.gmail.com';
+    $smtpPort = 587;
+    $user = SMTP_USER;
+    $pass = SMTP_PASS;
+
+    $socket = @fsockopen($smtpHost, $smtpPort, $errno, $errstr, 10);
+    if (!$socket) return "Connection failed: $errstr ($errno)";
+
+    $read = function() use ($socket) {
+        $r = '';
+        while ($line = fgets($socket, 515)) {
+            $r .= $line;
+            if (substr($line, 3, 1) === ' ') break;
+        }
+        return $r;
+    };
+
+    $send = function($cmd) use ($socket, $read) {
+        fwrite($socket, $cmd . "\r\n");
+        return $read();
+    };
+
+    $read(); // greeting
+    $send("EHLO localhost");
+    $send("STARTTLS");
+
+    if (!stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT)) {
+        fclose($socket);
+        return "TLS handshake failed";
+    }
+
+    $send("EHLO localhost");
+
+    // AUTH LOGIN
+    $send("AUTH LOGIN");
+    $send(base64_encode($user));
+    $authResp = $send(base64_encode($pass));
+    if (strpos($authResp, '235') === false) {
+        fclose($socket);
+        return "Auth failed – ตรวจสอบ SMTP_USER / SMTP_PASS (App Password)";
+    }
+
+    $send("MAIL FROM:<{$user}>");
+    $send("RCPT TO:<{$to}>");
+    $send("DATA");
+
+    $headers  = "From: " . SITE_NAME . " <{$user}>\r\n";
+    $headers .= "To: <{$to}>\r\n";
+    $headers .= "Subject: =?UTF-8?B?" . base64_encode($subject) . "?=\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+    $headers .= "Date: " . date('r') . "\r\n";
+
+    fwrite($socket, $headers . "\r\n" . $htmlBody . "\r\n.\r\n");
+    $dataResp = $read();
+
+    $send("QUIT");
+    fclose($socket);
+
+    return (strpos($dataResp, '250') !== false) ? true : "Send failed: $dataResp";
+}
