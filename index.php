@@ -76,7 +76,7 @@ include __DIR__ . '/includes/header.php';
                                 <div class="w-full h-24 lg:h-20 bg-elite-200 flex items-center justify-center text-elite-400 text-2xl">🐾</div>
                             <?php endif; ?>
                         </div>
-                        <p class="text-center text-base font-semibold font-serif italic text-elite-600 mt-2 group-hover:text-elite-800 transition-colors"><?= $cat['name'] ?></p>
+                        <p class="text-center text-base font-bold text-elite-700 mt-2 group-hover:text-elite-900 transition-colors"><?= $cat['name'] ?></p>
                     </a>
                 <?php endforeach; ?>
             </div>
