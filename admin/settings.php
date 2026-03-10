@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'intro' => ['intro_text'],
         'products' => ['products_section_title', 'products_section_subtitle', 'products_video_url'],
         'services' => ['services_section_title', 'services_video_url',
-            'service_1_title', 'service_1_desc', 'service_2_title', 'service_2_desc', 'service_3_title', 'service_3_desc'],
+            'service_1_title', 'service_1_desc', 'service_2_title', 'service_2_desc', 'service_3_title', 'service_3_desc', 'service_4_title', 'service_4_desc'],
         'materials' => ['materials_title', 'materials_text'],
         'reviews' => ['review_1_name', 'review_1_text', 'review_1_rating', 'review_2_name', 'review_2_text', 'review_2_rating'],
         'social' => ['social_line_url', 'social_line_id', 'social_facebook_url', 'social_instagram_url'],
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sectionImages = [
         'branding' => ['site_logo'],
         'hero' => ['hero_image_1', 'hero_image_2', 'hero_image_3'],
-        'services' => ['service_1_image', 'service_2_image', 'service_3_image'],
+        'services' => ['service_1_image', 'service_2_image', 'service_3_image', 'service_4_image'],
     ];
     foreach ($sectionImages[$section] ?? [] as $imgKey) {
         if (!empty($_FILES[$imgKey]['tmp_name']) && $_FILES[$imgKey]['error'] === 0) {
@@ -251,7 +251,7 @@ $st = $sectionTitles[$section] ?? $sectionTitles['branding'];
                         </div>
                     </div>
                     <hr class="my-4">
-                    <?php for ($i = 1; $i <= 3; $i++): ?>
+                    <?php for ($i = 1; $i <= 4; $i++): ?>
                         <div class="row g-3 mb-3">
                             <div class="col-12"><h6 class="fw-bold text-muted">Service <?= $i ?></h6></div>
                             <div class="col-md-4">
