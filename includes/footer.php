@@ -76,13 +76,11 @@ $fg = function ($k, $d = '') use ($fs) {
             <div>
                 <h4 class="font-semibold text-base uppercase tracking-wider mb-4 text-elite-400">Contact</h4>
                 <ul class="space-y-3">
-                    <?php $fp = $fg('contact_phone', '063-653-5151'); ?>
-                    <li class="flex items-start gap-3 text-base text-white/40">📞 <?= $fp ?></li>
+                    <li class="flex items-start gap-3 text-base text-white/40">📞 063-653-5151</li>
                     <?php if ($fe = $fg('contact_email')): ?>
                         <li class="flex items-start gap-3 text-base text-white/40">✉️ <?= $fe ?></li>
                     <?php endif; ?>
-                    <?php $fa = $fg('contact_address', '117 ข้างศูนย์ฝึก AIA 103 ม.17 Thanon Mittraphap Frontage, ในเมือง Mueang Khon Kaen District, Khon Kaen 40000, Thailand'); ?>
-                    <li class="flex items-start gap-3 text-base text-white/40">📍 <?= $fa ?></li>
+                    <li class="flex items-start gap-3 text-base text-white/40">📍 117 ข้างศูนย์ฝึก AIA 103 ม.17 Thanon Mittraphap Frontage, ในเมือง Mueang Khon Kaen District, Khon Kaen 40000, Thailand</li>
                 </ul>
             </div>
         </div>
