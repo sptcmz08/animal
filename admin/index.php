@@ -22,7 +22,7 @@ $recentProducts = $pdo->query("SELECT p.*, c.name as cat_name FROM products p LE
     <title>Admin Dashboard | Elite Pet Design</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/admin.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/admin.css?v=2">
 </head>
 
 <body>
