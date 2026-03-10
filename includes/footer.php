@@ -9,10 +9,10 @@ $fg = function ($k, $d = '') use ($fs) {
             <div>
                 <a href="<?= BASE_URL ?>" class="flex flex-col mb-4">
                     <span class="font-serif text-xl font-bold tracking-[0.15em] uppercase">ELITE PET DESIGN</span>
-                    <span class="text-[10px] tracking-[0.2em] uppercase text-elite-400 mt-0.5">Custom Pet
+                    <span class="text-xs tracking-[0.2em] uppercase text-elite-400 mt-0.5">Custom Pet
                         Furniture</span>
                 </a>
-                <p class="text-white/40 text-sm leading-relaxed mb-5">Workshop where custom pet furniture is
+                <p class="text-white/40 text-base leading-relaxed mb-5">Workshop where custom pet furniture is
                     hand-crafted to perfectly suit the lives of your furry, feathered, or exotic pets.</p>
                 <div class="flex gap-3">
                     <?php if ($fbu = $fg('social_facebook_url')): ?>
@@ -47,26 +47,26 @@ $fg = function ($k, $d = '') use ($fs) {
 
             <!-- Quick Links -->
             <div>
-                <h4 class="font-semibold text-sm uppercase tracking-wider mb-4 text-elite-400">Menu</h4>
+                <h4 class="font-semibold text-base uppercase tracking-wider mb-4 text-elite-400">Menu</h4>
                 <ul class="space-y-2.5">
                     <li><a href="<?= BASE_URL ?>"
-                            class="text-sm text-white/40 hover:text-elite-400 transition-colors">หน้าแรก</a></li>
+                            class="text-base text-white/40 hover:text-elite-400 transition-colors">หน้าแรก</a></li>
                     <li><a href="<?= BASE_URL ?>products.php"
-                            class="text-sm text-white/40 hover:text-elite-400 transition-colors">สินค้าทั้งหมด</a></li>
+                            class="text-base text-white/40 hover:text-elite-400 transition-colors">สินค้าทั้งหมด</a></li>
                     <li><a href="<?= BASE_URL ?>blog.php"
-                            class="text-sm text-white/40 hover:text-elite-400 transition-colors">บทความ</a></li>
+                            class="text-base text-white/40 hover:text-elite-400 transition-colors">บทความ</a></li>
                     <li><a href="<?= BASE_URL ?>contact.php"
-                            class="text-sm text-white/40 hover:text-elite-400 transition-colors">ติดต่อเรา</a></li>
+                            class="text-base text-white/40 hover:text-elite-400 transition-colors">ติดต่อเรา</a></li>
                 </ul>
             </div>
 
             <!-- Categories -->
             <div>
-                <h4 class="font-semibold text-sm uppercase tracking-wider mb-4 text-elite-400">Products</h4>
+                <h4 class="font-semibold text-base uppercase tracking-wider mb-4 text-elite-400">Products</h4>
                 <ul class="space-y-2.5">
                     <?php foreach (getCategories() as $cat): ?>
                         <li><a href="<?= BASE_URL ?>products.php?category=<?= $cat['slug'] ?>"
-                                class="text-sm text-white/40 hover:text-elite-400 transition-colors"><?= $cat['name'] ?></a>
+                                class="text-base text-white/40 hover:text-elite-400 transition-colors"><?= $cat['name'] ?></a>
                         </li>
                     <?php endforeach; ?>
                 </ul>
@@ -74,23 +74,21 @@ $fg = function ($k, $d = '') use ($fs) {
 
             <!-- Contact -->
             <div>
-                <h4 class="font-semibold text-sm uppercase tracking-wider mb-4 text-elite-400">Contact</h4>
+                <h4 class="font-semibold text-base uppercase tracking-wider mb-4 text-elite-400">Contact</h4>
                 <ul class="space-y-3">
-                    <?php if ($fp = $fg('contact_phone')): ?>
-                        <li class="flex items-center gap-3 text-sm text-white/40">📞 <?= $fp ?></li>
-                    <?php endif; ?>
+                    <?php $fp = $fg('contact_phone', '063-653-5151'); ?>
+                    <li class="flex items-start gap-3 text-base text-white/40">📞 <?= $fp ?></li>
                     <?php if ($fe = $fg('contact_email')): ?>
-                        <li class="flex items-center gap-3 text-sm text-white/40">✉️ <?= $fe ?></li>
+                        <li class="flex items-start gap-3 text-base text-white/40">✉️ <?= $fe ?></li>
                     <?php endif; ?>
-                    <?php if ($fa = $fg('contact_address')): ?>
-                        <li class="flex items-center gap-3 text-sm text-white/40">📍 <?= $fa ?></li>
-                    <?php endif; ?>
+                    <?php $fa = $fg('contact_address', '117 ข้างศูนย์ฝึก AIA 103 ม.17 Thanon Mittraphap Frontage, ในเมือง Mueang Khon Kaen District, Khon Kaen 40000, Thailand'); ?>
+                    <li class="flex items-start gap-3 text-base text-white/40">📍 <?= $fa ?></li>
                 </ul>
             </div>
         </div>
 
         <div class="border-t border-white/10 pt-6 text-center">
-            <p class="text-sm text-white/25">&copy; <?= date('Y') ?> Elite Pet Design. All rights reserved.</p>
+            <p class="text-base text-white/25">&copy; <?= date('Y') ?> Elite Pet Design. All rights reserved.</p>
         </div>
     </div>
 </footer>
