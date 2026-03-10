@@ -50,9 +50,9 @@ include __DIR__ . '/includes/header.php';
         <div class="space-y-4">
             <?php
             $infos = [
-                ['icon' => '📞', 'title' => 'โทรศัพท์', 'desc' => '080-123-4567', 'sub' => 'จ-ศ 9:00-18:00'],
+                ['icon' => '📞', 'title' => 'โทรศัพท์', 'desc' => '063-653-5151', 'sub' => 'จ-ศ 9:00-18:00'],
                 ['icon' => '✉️', 'title' => 'อีเมล', 'desc' => 'info@elitepetdesign.com', 'sub' => 'ตอบกลับภายใน 24 ชม.'],
-                ['icon' => '📍', 'title' => 'ที่อยู่', 'desc' => 'กรุงเทพมหานคร', 'sub' => 'ประเทศไทย'],
+                ['icon' => '📍', 'title' => 'ที่อยู่', 'desc' => '117 ข้างศูนย์ฝึก AIA 103 ม.17 Thanon Mittraphap Frontage, ในเมือง Mueang Khon Kaen District, Khon Kaen 40000', 'sub' => 'Thailand'],
                 ['icon' => '💬', 'title' => 'LINE', 'desc' => '@elitepetdesign', 'sub' => 'ตอบกลับเร็วที่สุด'],
             ];
             foreach ($infos as $i): ?>
