@@ -236,21 +236,21 @@ $siteTagline = $navSettings['site_tagline'] ?? 'เฟอร์นิเจอ�
                             style="mix-blend-mode:multiply" loading="lazy">
                     <?php endif; ?>
                     <span
-                        class="font-serif text-base font-bold tracking-[0.1em] uppercase text-elite-800"><?= $siteName ?></span>
+                        class="font-serif text-lg font-bold tracking-[0.1em] uppercase text-elite-800"><?= $siteName ?></span>
                 </a>
                 <!-- Desktop Nav -->
                 <div class="hidden md:flex items-center gap-1">
                     <a href="<?= BASE_URL ?>"
-                        class="px-3 py-1 text-xs font-medium tracking-wider uppercase transition-colors hover:text-elite-700 whitespace-nowrap <?= ($currentPage ?? '') === 'home' ? 'text-elite-800 font-semibold' : 'text-elite-500' ?>">Home</a>
+                        class="px-3 py-1 text-sm font-medium tracking-wider uppercase transition-colors hover:text-elite-700 whitespace-nowrap <?= ($currentPage ?? '') === 'home' ? 'text-elite-800 font-semibold' : 'text-elite-500' ?>">Home</a>
                     <a href="<?= BASE_URL ?>#services"
-                        class="px-3 py-1 text-xs font-medium tracking-wider uppercase transition-colors hover:text-elite-700 whitespace-nowrap text-elite-500">Our
+                        class="px-3 py-1 text-sm font-medium tracking-wider uppercase transition-colors hover:text-elite-700 whitespace-nowrap text-elite-500">Our
                         Service</a>
                     <a href="<?= BASE_URL ?>products.php"
-                        class="px-3 py-1 text-xs font-medium tracking-wider uppercase transition-colors hover:text-elite-700 whitespace-nowrap <?= ($currentPage ?? '') === 'products' ? 'text-elite-800 font-semibold' : 'text-elite-500' ?>">Products</a>
+                        class="px-3 py-1 text-sm font-medium tracking-wider uppercase transition-colors hover:text-elite-700 whitespace-nowrap <?= ($currentPage ?? '') === 'products' ? 'text-elite-800 font-semibold' : 'text-elite-500' ?>">Products</a>
                     <a href="<?= BASE_URL ?>blog.php"
-                        class="px-3 py-1 text-xs font-medium tracking-wider uppercase transition-colors hover:text-elite-700 whitespace-nowrap <?= ($currentPage ?? '') === 'blog' ? 'text-elite-800 font-semibold' : 'text-elite-500' ?>">Blog</a>
+                        class="px-3 py-1 text-sm font-medium tracking-wider uppercase transition-colors hover:text-elite-700 whitespace-nowrap <?= ($currentPage ?? '') === 'blog' ? 'text-elite-800 font-semibold' : 'text-elite-500' ?>">Blog</a>
                     <a href="<?= BASE_URL ?>contact.php"
-                        class="px-3 py-1 text-xs font-medium tracking-wider uppercase transition-colors hover:text-elite-700 whitespace-nowrap <?= ($currentPage ?? '') === 'contact' ? 'text-elite-800 font-semibold' : 'text-elite-500' ?>">Contact</a>
+                        class="px-3 py-1 text-sm font-medium tracking-wider uppercase transition-colors hover:text-elite-700 whitespace-nowrap <?= ($currentPage ?? '') === 'contact' ? 'text-elite-800 font-semibold' : 'text-elite-500' ?>">Contact</a>
                 </div>
                 <!-- Hamburger -->
                 <button id="menuToggle" class="md:hidden p-2 text-elite-700 hover:text-elite-900 transition-colors"

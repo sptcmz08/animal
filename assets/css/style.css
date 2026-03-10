@@ -520,7 +520,7 @@ textarea {
     color: var(--primary);
     padding: 6px 18px;
     border-radius: var(--radius-full);
-    font-size: 0.82rem;
+    font-size: 0.92rem;
     font-weight: 600;
     margin-bottom: 16px;
     text-transform: uppercase;
@@ -528,14 +528,14 @@ textarea {
 }
 
 .section-title {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     font-weight: 800;
     color: var(--secondary);
     margin-bottom: 12px;
 }
 
 .section-desc {
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     color: var(--gray-500);
     max-width: 560px;
     margin: 0 auto;
@@ -585,14 +585,14 @@ textarea {
 
 .category-name {
     color: white;
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     font-weight: 700;
     margin-bottom: 4px;
 }
 
 .category-count {
     color: rgba(255, 255, 255, 0.7);
-    font-size: 0.85rem;
+    font-size: 0.95rem;
 }
 
 /* ===== PRODUCT CARDS ===== */
@@ -647,7 +647,7 @@ textarea {
 .badge {
     padding: 4px 12px;
     border-radius: var(--radius-full);
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     font-weight: 600;
 }
 
@@ -715,7 +715,7 @@ textarea {
 }
 
 .product-category {
-    font-size: 0.78rem;
+    font-size: 0.9rem;
     color: var(--primary);
     font-weight: 600;
     text-transform: uppercase;
@@ -724,7 +724,7 @@ textarea {
 }
 
 .product-card-title {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--secondary);
     margin-bottom: 8px;
@@ -764,7 +764,7 @@ textarea {
 }
 
 .price-current {
-    font-size: 1.2rem;
+    font-size: 1.35rem;
     font-weight: 700;
     color: var(--primary);
     font-family: var(--font-en);
@@ -825,14 +825,14 @@ textarea {
 }
 
 .feature-title {
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     font-weight: 700;
     color: var(--secondary);
     margin-bottom: 8px;
 }
 
 .feature-desc {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--gray-500);
     line-height: 1.6;
 }
@@ -1597,14 +1597,14 @@ textarea.form-control {
 }
 
 .blog-card-date {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: var(--primary);
     font-weight: 600;
     margin-bottom: 8px;
 }
 
 .blog-card-title {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: var(--secondary);
     margin-bottom: 8px;
@@ -1612,7 +1612,7 @@ textarea.form-control {
 }
 
 .blog-card-excerpt {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--gray-500);
     line-height: 1.6;
     display: -webkit-box;

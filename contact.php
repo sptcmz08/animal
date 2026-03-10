@@ -62,7 +62,7 @@ include __DIR__ . '/includes/header.php';
                     <div>
                         <div class="font-bold text-elite-700 text-sm"><?= $i['title'] ?></div>
                         <div class="text-elite-600 font-semibold"><?= $i['desc'] ?></div>
-                        <div class="text-xs text-elite-400"><?= $i['sub'] ?></div>
+                        <div class="text-sm text-elite-400"><?= $i['sub'] ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>

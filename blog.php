@@ -28,7 +28,7 @@ include __DIR__ . '/includes/header.php';
                             onerror="this.src='https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=600&h=340&fit=crop'">
                     </div>
                     <div class="p-5">
-                        <div class="flex items-center gap-3 text-xs text-elite-400 mb-3">
+                        <div class="flex items-center gap-3 text-sm text-elite-400 mb-3">
                             <span><?= $p['author_name'] ?? 'Admin' ?></span>
                             <span>•</span>
                             <span><?= date('d/m/Y', strtotime($p['created_at'])) ?></span>
@@ -37,7 +37,7 @@ include __DIR__ . '/includes/header.php';
                             <?= $p['title'] ?></h3>
                         <p class="text-sm text-elite-500/50 line-clamp-3 mb-3">
                             <?= $p['excerpt'] ?: mb_substr(strip_tags($p['content']), 0, 120) . '...' ?></p>
-                        <span class="text-xs font-semibold text-elite-500">อ่านเพิ่มเติม →</span>
+                        <span class="text-sm font-semibold text-elite-500">อ่านเพิ่มเติม →</span>
                     </div>
                 </a>
             <?php endforeach; ?>

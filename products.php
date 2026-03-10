@@ -129,7 +129,7 @@ include __DIR__ . '/includes/header.php';
                                 </div>
                             </div>
                             <div class="p-4">
-                                <div class="text-xs text-elite-500 font-semibold mb-1"><?= $p['category_name'] ?? '' ?></div>
+                                <div class="text-sm text-elite-500 font-semibold mb-1"><?= $p['category_name'] ?? '' ?></div>
                                 <h3 class="font-semibold text-elite-800 mb-2 leading-snug line-clamp-2"><?= $p['name'] ?></h3>
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold text-elite-700"><?= formatPrice($p['sale_price'] ?: $p['price']) ?></span>
