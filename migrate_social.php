@@ -9,7 +9,7 @@ $updates = [
     // Social Links
     'social_facebook_url' => 'https://www.facebook.com/share/1G1sLYGRhR/?mibextid=wwXIfr',
     'social_line_url' => 'https://lin.ee/sbutzgh',
-    'social_instagram_url' => 'https://www.instagram.com/elite_petdesign/',
+    'social_instagram_url' => 'https://www.instagram.com/elite.petdesign?igsh=N2R2ZWVucmI4Z2Nk',
 
     // Default Reviews (if not set)
     'review_1_name' => 'คุณนภา',

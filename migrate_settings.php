@@ -66,7 +66,7 @@ $settings = [
     ['social_line_url', 'https://lin.ee/sbutzgh'],
     ['social_line_id', '@elitepetdesign'],
     ['social_facebook_url', 'https://www.facebook.com/share/1G1sLYGRhR/?mibextid=wwXIfr'],
-    ['social_instagram_url', 'https://www.instagram.com/elite_petdesign/'],
+    ['social_instagram_url', 'https://www.instagram.com/elite.petdesign?igsh=N2R2ZWVucmI4Z2Nk'],
 
     // Contact
     ['contact_phone', '080-123-4567'],
