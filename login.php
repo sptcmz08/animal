@@ -173,8 +173,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <form method="POST">
             <div class="form-group">
-                <label>อีเมล</label>
-                <input type="email" name="email" placeholder="admin@example.com"
+                <label>ชื่อผู้ใช้</label>
+                <input type="text" name="email" placeholder="admin"
                     value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" required autofocus>
             </div>
             <div class="form-group">
