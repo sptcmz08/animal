@@ -373,10 +373,10 @@ function redirect($url) {
 
 // ==================== GMAIL SMTP ====================
 function sendGmailSMTP($to, $subject, $htmlBody) {
-    $smtpHost = 'smtp.gmail.com';
-    $smtpPort = 587;
-    $user = SMTP_USER;
-    $pass = SMTP_PASS;
+    $smtpHost = MAIL_HOST;
+    $smtpPort = MAIL_PORT;
+    $user = MAIL_USERNAME;
+    $pass = MAIL_PASSWORD;
 
     $socket = @fsockopen($smtpHost, $smtpPort, $errno, $errstr, 10);
     if (!$socket) return "Connection failed: $errstr ($errno)";
